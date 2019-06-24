@@ -1,0 +1,33 @@
+{
+  "name": "shortjump-v2",
+  "version": "1.0.0",
+  "description": "A Discord bot that handles and works with Discord jump/message links in various ways",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GlitchMasta47/shortjump-v2.git"
+  },
+  "keywords": [
+    "discord.js",
+    "bot",
+    "discord",
+    "jump",
+    "link",
+    "message"
+  ],
+  "author": "GlitchMasta47 and Gymnophoria",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GlitchMasta47/shortjump-v2/issues"
+  },
+  "homepage": "https://github.com/GlitchMasta47/shortjump-v2#readme",
+  "dependencies": {
+    "@discordjs/uws": "^11.149.1",
+    "bufferutil": "^4.0.1",
+    "discord.js": "^11.5.1",
+    "erlpack": "github:discordapp/erlpack"
+  }
+}
