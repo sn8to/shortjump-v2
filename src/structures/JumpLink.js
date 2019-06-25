@@ -23,16 +23,16 @@ class JumpLink {
 			this.message = await this.channel.fetchMessage(this.messageID);
 		} catch (err) {
 			this.valid = false;
-			if (err.toString() !== 'DiscordAPIError: Unknown Message') console.error('Error retrieving JumpLink message:\n' + err);
+			if (err.toString() !== 'DiscordAPIError: Unknown Message' && err.toString() !== 'DiscordAPIError: Missing Access') console.error('Error retrieving JumpLink message:\n' + err);
 		}
 
 		if (this.channel && this.message) this.valid = true;
 	}
 
-	toEmbed() {
+	toMessageOptions(attachmentsType, displayEmbeds) {
 		const message = this.message;
 
-		let out = {
+		let embed = {
 			color: 0x7289da,
 			author: {
 				name: message.author.tag,
@@ -40,7 +40,27 @@ class JumpLink {
 			}
 		};
 
-		if (message.content) out.description = message.content;
+		if (message.content) embed.description = message.content;
+
+		if (message.attachments.size > 0 && attachmentsType < 3) {
+			let toList = [];
+
+			message.attachments.forEach(attachment => {
+				if (attachmentsType === 1 && !embed.image && attachment.height) embed.image = { url: attachment.url };
+				toList.unshift(attachment);
+			});
+
+			if (attachmentsType === 2 || toList.length > 1 || !toList[0].height) embed.fields = [ {
+				name: 'Attachments',
+				value: toList.map(attachment => `[${attachment.filename}](${attachment.url})`).join('\n')
+			} ];
+		}
+
+		let out = { embed };
+
+		if (attachmentsType === 3 && message.attachments.size > 0) out.files = message.attachments.map(attachment => {
+			return { attachment: attachment.url, name: attachment.filename };
+		});
 
 		return out;
 	}

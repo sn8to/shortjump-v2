@@ -15,6 +15,7 @@ class Util {
 		if (!events) throw new Error('No events found.');
 
 		events.forEach(event => {
+			event = event.split('.')[0];
 			client.on(event, require(path.join(eventsDir, event)));
 		});
 	}
@@ -25,9 +26,9 @@ class Util {
 
 		if (!commands) return;
 
-		commands.forEach(command => {
+		/* commands.forEach(command => {
 
-		});
+		}); */
 	}
 }
 

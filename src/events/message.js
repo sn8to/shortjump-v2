@@ -28,16 +28,16 @@ async function message(message) {
 	await parseMessage(message);
 
 	if (message.jumplinks && message.jumplinks.size > 0) {
-		let embeds = [];
+		let messages = [];
 
 		message.jumplinks.forEach(jumpLink => {
-			if (jumpLink.valid) embeds.push(jumpLink.toEmbed());
+			if (jumpLink.valid) messages.push(jumpLink.toMessageOptions());
 		});
 
 		let total = 0;
-		Util.forEachAsync(embeds, async embed => {
+		Util.forEachAsync(messages, async messageOptions => {
 			if (++total > 3) return;
-			await message.channel.send({ embed });
+			await message.channel.send(messageOptions);
 		});
 	}
 }
