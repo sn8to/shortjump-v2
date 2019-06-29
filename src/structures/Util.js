@@ -22,6 +22,8 @@ class Util {
 
 	static loadCommands() {
 		const commandsDir = path.join(__basedir, 'src', 'commands');
+		if (!fs.existsSync(commandsDir)) return;
+		
 		const commands = fs.readdirSync(commandsDir);
 
 		if (!commands) return;
