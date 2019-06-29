@@ -31,7 +31,7 @@ async function message(message) {
 		let messages = [];
 
 		message.jumplinks.forEach(jumpLink => {
-			if (jumpLink.valid) messages.push(jumpLink.toMessageOptions());
+			if (jumpLink.valid) messages.push(jumpLink.toMessageOptions(1));
 		});
 
 		let total = 0;

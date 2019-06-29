@@ -1,4 +1,6 @@
 # ShortJump v2
+[Invite the bot](https://discordapp.com/oauth2/authorize?client_id=592810781536550913&scope=bot&permissions=314368) | [Test the bot in the support server](https://discord.gg/HW7KYG9) | [View the trello board](https://trello.com/b/u4vGO6rQ/shortjump-v2)
+
 The successor to ShortJump v1, created for Discord Hack Week #1
 
 ShortJump is a bot that at its core shows previews to Discord jump/message links in chat, and further has features to store, view online, and manipulate these message links in other ways.
@@ -12,7 +14,7 @@ Now, paste the message in any server that ShortJump is in and ShortJump will dis
 
 ## Installation and Hosting
 ShortJump is (fairly) easy to set up and host, with only some very few requirements:
-- Node.js runtime (LTS or newer recommended)
+- [Node.js](https://nodejs.org/en/download/) runtime (LTS recommended)
 - Basic knowledge of Node.js for troubleshooting
 - A Discord bot token
 
