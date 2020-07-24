@@ -9,9 +9,9 @@ class JumpLink {
 
 		let parsed = link.match(JumpLink.jumpLinkRegex);
 
-		this.type = parsed[2] === '@me' ? 'dm' : 'text';
-		this.channelID = parsed[3];
-		this.messageID = parsed[4];
+		this.type = parsed[1] === '@me' ? 'dm' : 'text';
+		this.channelID = parsed[2];
+		this.messageID = parsed[3];
 		this.id = ++id;
 	}
 
@@ -66,7 +66,7 @@ class JumpLink {
 	}
 }
 
-JumpLink.jumpLinkRegex = /https?:\/\/(canary\.|ptb\.|www\.)?discord(app)?.com\/channels\/([0-9]{17,19}|@me)\/([0-9]{17,19})\/([0-9]{17,19})/;
-JumpLink.jumpLinkRegexGlobal = /https?:\/\/(canary\.|ptb\.|www\.)?discord(app)?.com\/channels\/([0-9]{17,19}|@me)\/([0-9]{17,19})\/([0-9]{17,19})/g;
+JumpLink.jumpLinkRegex = /https?:\/\/(?:canary\.|ptb\.|www\.)?discord(?:app)?.com\/channels\/([0-9]{17,19}|@me)\/([0-9]{17,19})\/([0-9]{17,19})/;
+JumpLink.jumpLinkRegexGlobal = /https?:\/\/(?:canary\.|ptb\.|www\.)?discord(?:app)?.com\/channels\/([0-9]{17,19}|@me)\/([0-9]{17,19})\/([0-9]{17,19})/g;
 
 module.exports = JumpLink;
