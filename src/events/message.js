@@ -2,7 +2,7 @@ const { Collection } = require('discord.js');
 
 const Util = require('../structures/Util');
 const JumpLink = require('../structures/JumpLink');
-const { jumpLinkRegex, jumpLinkRegexGlobal } = JumpLink;
+const { jumpLinkRegex, jumpLinkRegexGlobal, replyRegex } = JumpLink;
 
 /**
  * Parses a discord.js Message, adding a "jumplinks" property that is a Collection<JumpLink>
@@ -11,7 +11,10 @@ const { jumpLinkRegex, jumpLinkRegexGlobal } = JumpLink;
 async function parseMessage(message) {
 	const { content } = message;
 
+	// don't bother parsing a message without jump links
 	if (!jumpLinkRegex.test(content)) return;
+	// don't parse an inline reply jump link since discord already renders the original message
+	if (replyRegex.test(content)) content = content.split('\n').slice(1).join('\n');
 
 	message.jumplinks = new Collection();
 
