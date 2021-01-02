@@ -68,6 +68,5 @@ class JumpLink {
 
 JumpLink.jumpLinkRegex = /https?:\/\/(?:canary\.|ptb\.|www\.)?discord(?:app)?.com\/channels\/([0-9]{17,19}|@me)\/([0-9]{17,19})\/([0-9]{17,19})/;
 JumpLink.jumpLinkRegexGlobal = /https?:\/\/(?:canary\.|ptb\.|www\.)?discord(?:app)?.com\/channels\/([0-9]{17,19}|@me)\/([0-9]{17,19})\/([0-9]{17,19})/g;
-JumpLink.replyRegex = /^Replying to(?: <@([0-9]{17,19})> from) https?:\/\/(?:canary\.|ptb\.|www\.)?discord(?:app)?.com\/channels\/([0-9]{17,19}|@me)\/([0-9]{17,19})\/([0-9]{17,19})\n/;
 
 module.exports = JumpLink;
